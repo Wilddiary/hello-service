@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.wilddiary</groupId>
+		<artifactId>spring-base-starter</artifactId>
+		<version>1.1.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<groupId>com.wilddiary</groupId>
+	<artifactId>hello-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>hello-service</name>
+	<description>Demo service for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+		<jkube.version>${project.version}</jkube.version>
+		<spring-boot-admin-starter-client.version>3.0.2</spring-boot-admin-starter-client.version>
+		<kubernetes-maven-plugin.version>1.12.0</kubernetes-maven-plugin.version>
+		<spring-boot-maven-plugin.version>3.0.6</spring-boot-maven-plugin.version>
+		<jacoco.skip>true</jacoco.skip>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<version>${spring-boot-admin-starter-client.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>hello-service</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jkube</groupId>
+				<artifactId>kubernetes-maven-plugin</artifactId>
+				<version>${kubernetes-maven-plugin.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>
